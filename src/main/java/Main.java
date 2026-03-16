@@ -1,3 +1,6 @@
+import pages.LoginPage;
+import pages.CheckoutPage;
+import pages.ProductPage;
 
 public class Main {
     public static void main(String[] args) {

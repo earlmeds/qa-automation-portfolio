@@ -1,12 +1,14 @@
-class ProductPage extends BasePage {
+package pages;
+
+public class ProductPage extends BasePage {
     String productList = "listproduct";
     String addToCartButton = "button#cart";
 
-    ProductPage(String browser) {
+    public ProductPage(String browser) {
         super(browser);
     }
 
-    void addToCart(String product) {
+    public void addToCart(String product) {
         System.out.println("Adding to cart: " + product);
     }
 }

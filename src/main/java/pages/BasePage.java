@@ -1,11 +1,13 @@
-class BasePage {
+package pages;
+
+public class BasePage {
     String browser;
 
-    BasePage(String browser) {
+    public BasePage(String browser) {
         this.browser = browser;
     }
 
-    void navigate(String url) {
+    public void navigate(String url) {
         System.out.println("Navigating to " + url + " using " + this.browser);
     }
 }

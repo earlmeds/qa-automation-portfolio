@@ -1,12 +1,14 @@
-class CheckoutPage extends BasePage {
+package pages;
+
+public class CheckoutPage extends BasePage {
     String itemField = "input#item";
     String checkoutButton = "button#checkout";
 
-    CheckoutPage(String browser) {
+    public CheckoutPage(String browser) {
         super(browser);
     }
 
-    void checkout(String item) {
+    public void checkout(String item) {
         System.out.println("Checking out: " + item);
     }
 
