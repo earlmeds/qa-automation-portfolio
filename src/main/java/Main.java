@@ -1,26 +1,33 @@
 import pages.LoginPage;
-import pages.CheckoutPage;
-import pages.ProductPage;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        String browser = "Chrome";
+        WebDriver driver = new ChromeDriver();
+
+        String url = "https://www.saucedemo.com";
         String username = "standard_user";
         String password = "secret_sauce";
-        String product = "product 001";
 
-        LoginPage loginPage = new LoginPage(browser);
-        CheckoutPage checkoutPage = new CheckoutPage(browser);
-        ProductPage productPage = new ProductPage(browser);
-
-        loginPage.navigate("https://saucedemo.com");
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.navigate(url);
         loginPage.login(username, password);
 
-        productPage.addToCart(product);
+        String title = loginPage.getPageTitle();
+        System.out.println("Page title is: " + title);
 
-        checkoutPage.checkout(product);
+        if (title.equals("Products")) {
+            System.out.println("+ + LOGIN TEST PASSED");
+        } else {
+            System.out.println("+ + LOGIN TEST FAILED");
+        }
 
+        System.out.println("Login successful!");
+        Thread.sleep(5000);
+
+        driver.quit();
     }
 }

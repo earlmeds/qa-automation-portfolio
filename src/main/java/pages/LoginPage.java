@@ -1,14 +1,32 @@
 package pages;
 
-public class LoginPage extends BasePage {
-    String usernameField = "input#username";
-    String passwordField = "input#password";
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-    public LoginPage(String browser) {
-        super(browser);
+public class LoginPage {
+    WebDriver driver;
+
+    By usernameField = By.id("user-name");
+    By passwordField = By.id("password");
+    By loginButton = By.id("login-button");
+
+    By productTitle = By.className("title");
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void navigate(String url) {
+        driver.get(url);
     }
 
     public void login(String username, String password) {
-        System.out.println("Logging in as " + username);
+        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(loginButton).click();
+    }
+
+    public String getPageTitle() {
+        return driver.findElement(productTitle).getText();
     }
 }
